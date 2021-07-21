@@ -1,0 +1,17 @@
+## Interface: 90100
+## Interface-Retail: 90100
+## Interface-Classic: 11307
+## Interface-BCC: 20501
+## Version: @project-version@
+## Title: PlexusCustomLayouts
+## Notes: Adds custom layouts for Plexus
+## Dependencies: Plexus
+
+## Author: Doadin
+## X-Website: https://wow.curseforge.com/projects/plexuscustomlayouts/
+## X-Curse-Project-ID: 506844
+
+SecureGroupHeadersCopy.lua
+Locales.lua
+PlexusCustomLayouts.lua
+PlexusCustomLayoutsFrame.xml
