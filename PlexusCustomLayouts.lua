@@ -135,8 +135,8 @@ function PlexusLayout:OnEnable()
 		end
 	end
 	PlexusLayout:OnEnableOrigin()
-	PlexusLayout:UnregisterEvent("Plexus_RosterUpdated")
-	PlexusLayout:RegisterEvent("Plexus_RosterUpdated", "LayoutUpdateWhenRosterUpdated")
+	PlexusLayout:UnregisterMessage("Plexus_RosterUpdated")
+	PlexusLayout:RegisterMessage("Plexus_RosterUpdated", "LayoutUpdateWhenRosterUpdated")
 	PlexusLayout:RegisterEvent("PLAYER_ROLES_ASSIGNED", "LayoutUpdateWhenRosterUpdated")
 end
 

@@ -1,7 +1,7 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
 ..\FrameXML\UI.xsd">
 
-	<Frame name="PlexusCustomLayoutsFrame" parent="UIParent" hidden="true" toplevel="true" enableMouse="true" frameStrata="DIALOG" frameLevel="2">
+	<Frame name="PlexusCustomLayoutsFrame" parent="UIParent" hidden="true" toplevel="true" enableMouse="true" frameStrata="DIALOG" frameLevel="2" inherits="BackdropTemplate">
 		<Size>
 			<AbsDimension x="600" y="280"/>
 		</Size>
@@ -45,7 +45,7 @@
 			</Layer>
 		</Layers>
         <Frames>
-            <Frame name="$parentArgHitRect" enableMouse="false" frameLevel="1">
+            <Frame name="$parentArgHitRect" enableMouse="false" frameLevel="1" inherits="BackdropTemplate">
                 <Anchors>
                     <Anchor point="TOPLEFT">
                         <Offset> <AbsDimension x="20" y="-60"/> </Offset>
@@ -145,7 +145,11 @@
 					<OnClick>
 						if UnitName("target") then
                             local name, realm = UnitName("target")
-                            name = name .. (realm ~= GetRealmName() and "-"..realm or "")
+							if realm then
+							name = name .. "-" .. realm
+							else
+                            name = name
+							end
 							PlexusCustomLayoutsFrameArg:Insert(name..",")
 						end
 					</OnClick>
