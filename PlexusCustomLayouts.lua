@@ -44,14 +44,14 @@ local options = {
 	desc = L["Add customed layouts using a simple grammer."],
 	order = 10,
 	func = function()
-        if InterfaceOptionsFrame:IsVisible() then
-            InterfaceOptionsFrame.lastFrame = nil
-            HideUIPanel(InterfaceOptionsFrame, true)
-            PlexusCustomLayoutsFrame.lastFrame = InterfaceOptionsFrame
-        else
-            LibStub("AceConfigDialog-3.0"):Close("Plexus")
-            PlexusCustomLayoutsFrame.lastFrame = function() LibStub("AceConfigDialog-3.0"):Open("Plexus") end
-        end
+        --if InterfaceOptionsFrame:IsVisible() then
+        --    InterfaceOptionsFrame.lastFrame = nil
+        --    HideUIPanel(InterfaceOptionsFrame, true)
+        --    PlexusCustomLayoutsFrame.lastFrame = InterfaceOptionsFrame
+        --else
+        --    LibStub("AceConfigDialog-3.0"):Close("Plexus")
+        --    PlexusCustomLayoutsFrame.lastFrame = function() LibStub("AceConfigDialog-3.0"):Open("Plexus") end
+        --end
 
 		--PlexusLayout:SaveLayout("aa", { {groupFilter = "PALADIN",},{groupFilter = "SHAMAN",},{groupFilter = "MAGE",} });
 		PlexusCustomLayoutsFrame:Show()
