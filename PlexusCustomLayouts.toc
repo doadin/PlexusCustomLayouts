@@ -12,6 +12,8 @@
 ## X-Website: https://wow.curseforge.com/projects/plexuscustomlayouts/
 ## X-Curse-Project-ID: 506844
 
+## IconTexture: Interface\AddOns\Plexus\Media\icon
+
 SecureGroupHeadersCopy.lua
 Locales.lua
 PlexusCustomLayouts.lua
