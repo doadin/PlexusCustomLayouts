@@ -30,7 +30,7 @@ PlexusCustomLayouts.defaultDB = {
 	layouts = {
 		[GAMEMENU_HELP] = L.USAGE_HELP_MESSAGE, --"WARR,DK,PAL,HUN;CLASS\n\n;1,2,3,4,5;8/3;NR\n\nOneplayer",
 		["CustomLayoutsExample"] = "nameList=Myraidleader,"..UnitName("player")..",Mylover;sort=NAMELIST\n"
-		.."groupFilter=TANK;groupBy=CLASS;order=WARR,DK,PAL,MONK,DH;sort=NAME\n"
+		.."groupFilter=TANK;groupBy=CLASS;order=WARR,PAL;sort=NAME\n"
 		.."HEALER,MA;groupBy=RAIDROLE;sort=INDEX;DESC\n"
 		.."1,2,3,4,5,6,7,8;NOREPEAT;INDEX;ASC;5/8\n"
 		.."1,2,3,4,5,6,7,8;PET;5/2\n",
@@ -203,27 +203,50 @@ function PlexusLayout:LayoutUpdateWhenRosterUpdated()
 	PlexusLayout:PartyMembersChanged()
 end
 
-local GROUP_FILTER_ABBR = {
-	[BC.WARRIOR]="WARRIOR",         ["WARRIOR"]="WARRIOR",          ["ZS"]="WARRIOR",
-	[BC.PRIEST]="PRIEST",           ["PRIEST"]="PRIEST",            ["MS"]="PRIEST",
-	[BC.DRUID]="DRUID",             ["DRUID"]="DRUID",              ["DD"]="DRUID",         ["XD"]="DRUID",
-	[BC.PALADIN]="PALADIN",         ["PALADIN"]="PALADIN",          ["QS"]="PALADIN",       ["SQ"]="PALADIN",
-	[BC.SHAMAN]="SHAMAN",           ["SHAMAN"]="SHAMAN",            ["SM"]="SHAMAN",
-	[BC.MAGE]="MAGE",               ["MAGE"]="MAGE",                ["FS"]="MAGE",
-	[BC.WARLOCK]="WARLOCK",         ["WARLOCK"]="WARLOCK",          ["WL"]="WARLOCK",       ["SS"]="WARLOCK",
-	[BC.HUNTER]="HUNTER",	        ["HUNTER"]="HUNTER",            ["LR"]="HUNTER",
-	[BC.ROGUE]="ROGUE",             ["ROGUE"]="ROGUE",              ["DZ"]="ROGUE",         ["QXZ"]="ROGUE",
-	[BC.DEATHKNIGHT]="DEATHKNIGHT", ["DEATHKNIGHT"]="DEATHKNIGHT",  ["DK"]="DEATHKNIGHT",
-    [BC.MONK]="MONK",               ["MONK"]="MONK",                ["WS"]="MONK",
-    [BC.DEMONHUNTER]="DEMONHUNTER", ["DEMONHUNTER"]="DEMONHUNTER",  ["DH"]="DEMONHUNTER",
-	["MAINTANK"]="MAINTANK",        ["MT"]="MAINTANK",
-	["MAINASSIST"]="MAINASSIST",    ["MA"]="MAINASSIST",
-    ["HEALER"]="HEALER",            ["HEAL"]="HEALER",
-    ["DAMAGER"]="DAMAGER",          ["DAM"]="DAMAGER",      ["DPS"]="DAMAGER",
-    ["TANK"]="TANK",
-    ["NONE"]="NONE",
-	["1"]="1", ["2"]="2", ["3"]="3", ["4"]="4", ["5"]="5", ["6"]="6", ["7"]="7", ["8"]="8",
-}
+local GROUP_FILTER_ABBR
+if Plexus:IsRetailWow() then
+    GROUP_FILTER_ABBR = {
+    	[BC.WARRIOR]="WARRIOR",         ["WARRIOR"]="WARRIOR",          ["ZS"]="WARRIOR",
+    	[BC.PRIEST]="PRIEST",           ["PRIEST"]="PRIEST",            ["MS"]="PRIEST",
+    	[BC.DRUID]="DRUID",             ["DRUID"]="DRUID",              ["DD"]="DRUID",         ["XD"]="DRUID",
+    	[BC.PALADIN]="PALADIN",         ["PALADIN"]="PALADIN",          ["QS"]="PALADIN",       ["SQ"]="PALADIN",
+    	[BC.SHAMAN]="SHAMAN",           ["SHAMAN"]="SHAMAN",            ["SM"]="SHAMAN",
+    	[BC.MAGE]="MAGE",               ["MAGE"]="MAGE",                ["FS"]="MAGE",
+    	[BC.WARLOCK]="WARLOCK",         ["WARLOCK"]="WARLOCK",          ["WL"]="WARLOCK",       ["SS"]="WARLOCK",
+    	[BC.HUNTER]="HUNTER",	        ["HUNTER"]="HUNTER",            ["LR"]="HUNTER",
+    	[BC.ROGUE]="ROGUE",             ["ROGUE"]="ROGUE",              ["DZ"]="ROGUE",         ["QXZ"]="ROGUE",
+    	[BC.DEATHKNIGHT]="DEATHKNIGHT", ["DEATHKNIGHT"]="DEATHKNIGHT",  ["DK"]="DEATHKNIGHT",
+        [BC.MONK]="MONK",               ["MONK"]="MONK",                ["WS"]="MONK",
+        [BC.DEMONHUNTER]="DEMONHUNTER", ["DEMONHUNTER"]="DEMONHUNTER",  ["DH"]="DEMONHUNTER",
+    	["MAINTANK"]="MAINTANK",        ["MT"]="MAINTANK",
+    	["MAINASSIST"]="MAINASSIST",    ["MA"]="MAINASSIST",
+        ["HEALER"]="HEALER",            ["HEAL"]="HEALER",
+        ["DAMAGER"]="DAMAGER",          ["DAM"]="DAMAGER",      ["DPS"]="DAMAGER",
+        ["TANK"]="TANK",
+        ["NONE"]="NONE",
+    	["1"]="1", ["2"]="2", ["3"]="3", ["4"]="4", ["5"]="5", ["6"]="6", ["7"]="7", ["8"]="8",
+    }
+end
+if Plexus:IsClassicWow() or Plexus:IsWrathWow() then
+	GROUP_FILTER_ABBR = {
+    	[BC.WARRIOR]="WARRIOR",         ["WARRIOR"]="WARRIOR",          ["ZS"]="WARRIOR",
+    	[BC.PRIEST]="PRIEST",           ["PRIEST"]="PRIEST",            ["MS"]="PRIEST",
+    	[BC.DRUID]="DRUID",             ["DRUID"]="DRUID",              ["DD"]="DRUID",         ["XD"]="DRUID",
+    	[BC.PALADIN]="PALADIN",         ["PALADIN"]="PALADIN",          ["QS"]="PALADIN",       ["SQ"]="PALADIN",
+    	[BC.SHAMAN]="SHAMAN",           ["SHAMAN"]="SHAMAN",            ["SM"]="SHAMAN",
+    	[BC.MAGE]="MAGE",               ["MAGE"]="MAGE",                ["FS"]="MAGE",
+    	[BC.WARLOCK]="WARLOCK",         ["WARLOCK"]="WARLOCK",          ["WL"]="WARLOCK",       ["SS"]="WARLOCK",
+    	[BC.HUNTER]="HUNTER",	        ["HUNTER"]="HUNTER",            ["LR"]="HUNTER",
+    	[BC.ROGUE]="ROGUE",             ["ROGUE"]="ROGUE",              ["DZ"]="ROGUE",         ["QXZ"]="ROGUE",
+    	["MAINTANK"]="MAINTANK",        ["MT"]="MAINTANK",
+    	["MAINASSIST"]="MAINASSIST",    ["MA"]="MAINASSIST",
+        ["HEALER"]="HEALER",            ["HEAL"]="HEALER",
+        ["DAMAGER"]="DAMAGER",          ["DAM"]="DAMAGER",      ["DPS"]="DAMAGER",
+        ["TANK"]="TANK",
+        ["NONE"]="NONE",
+    	["1"]="1", ["2"]="2", ["3"]="3", ["4"]="4", ["5"]="5", ["6"]="6", ["7"]="7", ["8"]="8",
+    }
+end
 
 local GROUP_BYS = {
     ["ROLE"] = "ASSIGNEDROLE",
