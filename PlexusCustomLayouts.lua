@@ -54,6 +54,14 @@ local options = {
         --end
 
 		--PlexusLayout:SaveLayout("aa", { {groupFilter = "PALADIN",},{groupFilter = "SHAMAN",},{groupFilter = "MAGE",} });
+        PlexusCustomLayoutsFrame:SetBackdrop({
+            bgFile = "Interface/DialogFrame/UI-DialogBox-Background",
+            edgeFile = "Interface/DialogFrame/UI-DialogBox-Border",
+            tile = true,
+            tileSize = 32,
+            edgeSize = 32,
+            insets = { left = 11, right = 11, top = 12, bottom = 10 },
+        })
 		PlexusCustomLayoutsFrame:Show()
 		local layoutName
 		if PlexusLayout.db.profile.layouts.force and PlexusLayout.db.profile.layouts.force~= Plexus.L["None"] then
@@ -227,7 +235,7 @@ if Plexus:IsRetailWow() then
     	["1"]="1", ["2"]="2", ["3"]="3", ["4"]="4", ["5"]="5", ["6"]="6", ["7"]="7", ["8"]="8",
     }
 end
-if Plexus:IsClassicWow() or Plexus:IsWrathWow() then
+if Plexus:IsClassicWow() or Plexus:IsTBCWow() or Plexus:IsWrathWow() then
 	GROUP_FILTER_ABBR = {
     	[BC.WARRIOR]="WARRIOR",         ["WARRIOR"]="WARRIOR",          ["ZS"]="WARRIOR",
     	[BC.PRIEST]="PRIEST",           ["PRIEST"]="PRIEST",            ["MS"]="PRIEST",
